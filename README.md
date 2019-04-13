@@ -1,2 +1,2 @@
-# micro-tasks
-phalcon micro tasks scaffold
+# micro-scaffold
+scaffold for phalcon micro
