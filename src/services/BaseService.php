@@ -69,7 +69,7 @@ class BaseService
         }
 
         if (in_array($column['type'], [Column::TYPE_VARCHAR, Column::TYPE_CHAR])) {
-            $rule .= 'alphaNum' . ($column['size'] > 0 ? '|strLen:1,' . $column['size'] : '') . '|';
+            $rule .= ($column['size'] > 0 ? 'strLen:1,' . $column['size'] . '|' : '');
         }
 
         if ($column['type'] === Column::TYPE_DATE) {
