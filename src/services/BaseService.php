@@ -17,9 +17,9 @@ class BaseService
 
     /**
      * 初始化
-     * @param $params
+     * @param array $params
      */
-    public function init($params)
+    public function init(array $params)
     {
         if (empty($this->db)) {
             $this->db = $params['conn'];
@@ -55,9 +55,9 @@ class BaseService
 
     /**
      * 获取字段校验规则
-     * @param $column
+     * @param array $column
      */
-    public function getColumnRule($column)
+    public function getColumnRule(array $column)
     {
         $rule = '';
         if ($column['isNotNull']) {
@@ -94,7 +94,7 @@ class BaseService
      * @param string $delimiter
      * @return string
      */
-    public function camelize($string, $delimiter = '_')
+    public function camelize(string $string, string $delimiter = '_')
     {
         if (empty($delimiter)) {
             throw new \InvalidArgumentException('Please, specify the delimiter');
@@ -118,7 +118,7 @@ class BaseService
      * @param string $string
      * @return string
      */
-    public function lowerCamelize($string)
+    public function lowerCamelize(string $string)
     {
         return lcfirst(self::camelize($string));
     }

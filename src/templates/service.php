@@ -28,10 +28,10 @@ class :className:Service
 
     /**
      * 获取列表
-     * @param $params
+     * @param array $params
      * @return array
      */
-    public function getList($params)
+    public function getList(array $params)
     {
         $page = $params['page'] ?? 1;
         $pageSize = $params['pageSize'] ?? Constant::PAGE_SIZE;
@@ -40,11 +40,11 @@ class :className:Service
 
     /**
      * 获取详情
-     * @param $params
+     * @param array $params
      * @return array
      * @throws CustomException
      */
-    public function getInfo($params)
+    public function getInfo(array $params)
     {
         $data = [
             'columns' => [],
@@ -59,10 +59,10 @@ class :className:Service
 
     /**
      * 创建
-     * @param $params
+     * @param array $params
      * @throws CustomException
      */
-    public function create($params)
+    public function create(array $params)
     {
         $ret = $this->:lowerClassName:->create($params, $this->:lowerClassName:->saveColumn);
         if (!$ret) {
@@ -72,10 +72,10 @@ class :className:Service
 
     /**
      * 修改
-     * @param $params
+     * @param array $params
      * @throws CustomException
      */
-    public function update($params)
+    public function update(array $params)
     {
         $ret = $this->:lowerClassName:->model($params[':primaryKey:'])->update($params, $this->:lowerClassName:->saveColumn);
         if (!$ret) {
@@ -85,10 +85,10 @@ class :className:Service
 
     /**
      * 删除
-     * @param $params
+     * @param array $params
      * @throws CustomException
      */
-    public function delete($params)
+    public function delete(array $params)
     {
         $ret = $this->:lowerClassName:->model($params[':primaryKey:'])->delete();
         if (!$ret) {

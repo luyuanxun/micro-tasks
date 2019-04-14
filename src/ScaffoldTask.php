@@ -11,9 +11,9 @@ class ScaffoldTask extends Task
 {
     /**
      * 生成restful脚手架
-     * @param $params
+     * @param array $params
      */
-    public function restAction($params)
+    public function restAction(array $params)
     {
         $data = [
             'conn' => $this->di->getShared('dbSlave'),
@@ -48,9 +48,9 @@ class ScaffoldTask extends Task
 
     /**
      * 根据模版生成控制器
-     * @param $params
+     * @param array $params
      */
-    private function controller($params)
+    private function controller(array $params)
     {
         $controllerService = new ControllerService();
         $controllerService->init($params)->create();
@@ -58,9 +58,9 @@ class ScaffoldTask extends Task
 
     /**
      * 根据模版生成模型
-     * @param $params
+     * @param array $params
      */
-    private function model($params)
+    private function model(array $params)
     {
         $modelService = new ModelService();
         $modelService->init($params)->create();
@@ -68,9 +68,9 @@ class ScaffoldTask extends Task
 
     /**
      * 生成crud
-     * @param $params
+     * @param array $params
      */
-    public function crud($params)
+    public function crud(array $params)
     {
         //controller
         $controllerService = new ControllerService();
@@ -85,6 +85,6 @@ class ScaffoldTask extends Task
         $serviceService->init($params)->create();
         $serviceService->createRoute();//生成路由
         echo 'CURD完成！！！' . PHP_EOL;
-        echo '恭喜恭喜，请根据' . APP_PATH . '/app.php的路由规则测试一波'.PHP_EOL;
+        echo '恭喜恭喜，请根据' . APP_PATH . '/app.php的路由规则测试一波' . PHP_EOL;
     }
 }

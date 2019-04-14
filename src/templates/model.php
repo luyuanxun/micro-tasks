@@ -61,19 +61,19 @@ class :className: extends Base
     }
 
     /**
-     * @param $params
+     * @param array $params
      * @return mixed
      */
-    public function getCount($params)
+    public function getCount(array $params)
     {
         return :className:::count($params);
     }
 
     /**
-     * @param $params
+     * @param array $params
      * @return array
      */
-    public function getAll($params)
+    public function getAll(array $params)
     {
         if (empty($params['columns'])) {
             $params['columns'] = $this->getColumn;
@@ -83,11 +83,11 @@ class :className: extends Base
     }
 
     /**
-     * @param $params
+     * @param array $params
      * @return array
      * @throws CustomException
      */
-    public function getOne($params)
+    public function getOne(array $params)
     {
         if (empty($params['columns'])) {
             $params['columns'] = $this->getColumn;
@@ -102,11 +102,11 @@ class :className: extends Base
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return Model
      * @throws CustomException
      */
-    public function model($id){
+    public function model(int $id){
         $:lowerClassName: = :className:::findFirst($id);
         if (!$:lowerClassName:) {
             error_exit(Code::GET_DATA_FAILED, ['field' => ':className:']);
