@@ -15,35 +15,20 @@ class ScaffoldTask extends Task
      */
     public function restAction(array $params)
     {
-        $data = [
-            'conn' => $this->di->getShared('dbSlave'),
-            'force' => false,
-        ];
-
-        $type = 'crud';
-        foreach ($params as $param) {
-            if (strpos($param, '--type=') !== false) {
-                $type = substr($param, 7);
-            }
-
-            if (strpos($param, '--table=') !== false) {
-                $data['table'] = substr($param, 8);
-            }
-
-            if ($param === '-f') {
-                $data['force'] = true;
-            }
+        if (empty($params['table'])) {
+            die('提示：没有设置数据表' . PHP_EOL);
         }
 
+        $type = $params['type'] ?? 'crud';
         if (!in_array($type, ['crud', 'controller', 'model'])) {
             die('提示：命令 run ' . $argv[1] . ' ' . $argv[2] . ' 错误' . PHP_EOL);
         }
 
-        if (empty($data['table'])) {
-            die('提示：没有设置数据表' . PHP_EOL);
-        }
-
-        $this->$type($data);
+        $this->$type([
+            'conn' => $this->di->getShared('dbSlave'),
+            'table' => $params['table'],
+            'force' => $params['f'] ?? false,
+        ]);
     }
 
     /**
