@@ -21,7 +21,7 @@ class ScaffoldTask extends Task
 
         $type = $params['type'] ?? 'crud';
         if (!in_array($type, ['crud', 'controller', 'model'])) {
-            die('提示：命令 run ' . $argv[1] . ' ' . $argv[2] . ' 错误' . PHP_EOL);
+            die('提示：命令 run scaffold' . $type . ' 错误' . PHP_EOL);
         }
 
         $this->$type([

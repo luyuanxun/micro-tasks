@@ -18,6 +18,7 @@ class BaseService
     /**
      * 初始化
      * @param array $params
+     * @return $this
      */
     public function init(array $params)
     {
@@ -56,6 +57,7 @@ class BaseService
     /**
      * 获取字段校验规则
      * @param array $column
+     * @return string
      */
     public function getColumnRule(array $column)
     {
